@@ -1,4 +1,4 @@
-import { Client, Interaction } from "discord.js"
+import { Client, ChatInputCommandInteraction } from "discord.js"
 
 
 module.exports = {
@@ -7,7 +7,8 @@ module.exports = {
     // devOnly: ,
     // testOnly: ,
     // options:,
-    callback: async (client: Client, interaction: any) => {
+    deleted: true,
+    callback: async (client: Client, interaction: ChatInputCommandInteraction) => {
         await interaction.reply({ content: `Pong! ${client.ws.ping}ms`, ephemeral: true })
     }
 }
