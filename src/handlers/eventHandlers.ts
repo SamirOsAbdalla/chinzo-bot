@@ -19,7 +19,6 @@ const eventHandler = (client: Client) => {
 
         const eventName = eventFolder.replace(/\\/g, "/").split("/").pop()
 
-
         client.on(eventName as string, async (arg) => {
             for (const eventFile of eventFiles) {
                 const eventFunction = require(eventFile)

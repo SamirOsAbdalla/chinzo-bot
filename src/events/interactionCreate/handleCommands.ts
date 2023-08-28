@@ -53,7 +53,7 @@ module.exports = async (client: Client, interaction: any) => {
 
         await commandObject.callback(client, interaction)
     } catch (error) {
-        console.log("Error in handle commands")
+        console.log(`Error in handle commands ${error}`)
     }
 
 }
