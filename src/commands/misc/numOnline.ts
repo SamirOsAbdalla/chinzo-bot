@@ -8,7 +8,6 @@ module.exports = {
     // testOnly: ,
     // options:,
     callback: async (client: Client, interaction: ChatInputCommandInteraction) => {
-        console.log(interaction)
         const members = await interaction.guild?.members.fetch({ withPresences: true })
         let numOnline = 0;
         members?.forEach((member: GuildMember) => {
@@ -17,7 +16,7 @@ module.exports = {
             }
         })
 
-        const messageString = `There are currently ${numOnline == 0 ? "no" : numOnline} users online.`
+        const messageString = `There ${numOnline == 1 ? "is" : "are"} currently ${numOnline == 0 ? "no" : numOnline} ${numOnline == 1 ? "user" : "users"} online.`
 
         await interaction.reply({ content: messageString, ephemeral: true })
     }
