@@ -9,6 +9,5 @@ module.exports = {
     // options:,
     deleted: true,
     callback: async (client: Client, interaction: ChatInputCommandInteraction) => {
-        await interaction.reply({ content: `Pong! ${client.ws.ping}ms`, ephemeral: true })
     }
 }
