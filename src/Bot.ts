@@ -12,8 +12,12 @@ const client = new Client({
         GatewayIntentBits.GuildPresences,
         GatewayIntentBits.DirectMessages,
         GatewayIntentBits.GuildMessageReactions,
+        GatewayIntentBits.GuildVoiceStates,
     ]
 });
 
+
 eventHandler(client)
+
+
 client.login(process.env.TOKEN!)
