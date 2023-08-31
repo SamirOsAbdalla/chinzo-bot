@@ -1,15 +1,32 @@
 
-import { Client, GuildMember, EmbedBuilder, ChannelType, PermissionsBitField } from "discord.js"
+import { Client, GuildMember, EmbedBuilder, ChannelType, PermissionsBitField, userMention } from "discord.js"
 import findTextChannel from "../../utils/findTextChannel"
+
 module.exports = async (client: Client, member: GuildMember) => {
+    const channels = await member.guild.channels.fetch()
+
+    const introChannel = channels.find(channel => channel?.name == "👤-introductions")
+    const eventsChannel = channels.find(channel => channel?.name == "📅-events")
+    const welcomeChannel = channels.find(channel => channel?.name == "👋welcome")
     let welcomeEmbed = new EmbedBuilder()
-        .setColor("#f59342")
-        .setTitle(`Welcome to ${member.guild}, ${member.user.username}!`)
-        .setAuthor({ name: "Chinzo" })
+        .setColor("#FFFFFF")
+        .setTitle(`Thank you for joining \`Gator Greasers\` automotive club!`)
+        .setDescription(
+            `Please feel free to check out some of the things you can do below.\n-------------------------------------------------------------------\n
+            🚗 | \u1CBCCheck out our [IG](https://www.instagram.com/gator.greasers/) & [GatorXperience page](https://sfsu.campuslabs.com/engage/organization/gatorgreasers)\n
+            👤 | \u1CBCIntroduce yourself in  <#${introChannel?.id}>\n
+            📅 | \u1CBCFind details about our upcoming events in <#${eventsChannel?.id}>`
+        )
+        .setThumbnail("https://i.imgur.com/9wC6WrJ.png")
+        .setAuthor({ name: "Greasy" })
 
-    const foundChannel = findTextChannel(member)
 
-    if (foundChannel?.type == ChannelType.GuildText) {
-        foundChannel.send({ target: member, embeds: [welcomeEmbed] })
+    welcomeEmbed.setAuthor({ name: `${member.user.globalName}`, iconURL: member.displayAvatarURL() })
+
+
+    // const foundChannel = findTextChannel(member)
+
+    if (welcomeChannel?.type == ChannelType.GuildText) {
+        welcomeChannel.send({ target: member, content: `<@${member.user.id}>`, embeds: [welcomeEmbed] })
     }
 }
