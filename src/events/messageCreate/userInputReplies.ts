@@ -17,12 +17,12 @@ const createResponseMessage = (content: string, substring: string): string => {
 
     let submitString = ""
     switch (substring) {
-        case ("chin"): {
+        case ("greasy bot"): {
             for (let i = 0; i < numOccurrences; i++) {
                 if (i == 0) {
-                    submitString += "I AM CHINZO"
+                    submitString += "I am Greasy."
                 } else {
-                    submitString += " CHINZO"
+                    submitString += "Greasy"
                 }
             }
             break;
@@ -46,9 +46,9 @@ const createResponseMessage = (content: string, substring: string): string => {
 module.exports = async (client: Client, message: Message) => {
 
     const content = message.content.toLowerCase()
-    if (!message.author.bot && content.includes("chin")) {
+    if (!message.author.bot && content.includes("greasy bot")) {
 
-        await message.reply(createResponseMessage(content, "chin"))
+        await message.reply(createResponseMessage(content, "greasy bot"))
     }
 
     if (!message.author.bot && content.includes("ping")) {
