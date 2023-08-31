@@ -1,7 +1,7 @@
 import { Player } from "discord-player"
 import {
-    Client, ChatInputCommandInteraction,
-    ApplicationCommandOptionType, EmbedBuilder
+    Client,
+    ApplicationCommandOptionType, EmbedBuilder,
 } from "discord.js"
 
 module.exports = {
@@ -18,11 +18,11 @@ module.exports = {
         }
     ],
     callback: async (client: Client, interaction: any, player: Player) => {
+
         const channel = interaction.member.voice.channel;
-        if (!channel) return interaction.reply('You are not connected to a voice channel!'); // make sure we have a voice channel
+        if (!channel) return interaction.reply({ content: 'You are not connected to a voice channel!', ephemeral: true }); // make sure we have a voice channel
 
         const query = interaction.options.getString('query', true); // we need input/query to play
-
         // let's defer the interaction as things can take time to process
         await interaction.deferReply();
 
@@ -34,7 +34,7 @@ module.exports = {
                 }
             });
 
-            return interaction.followUp(`**${track.title}** enqueued`);
+            return interaction.followUp(`<@${interaction.user.id}> | \u1CBCAdded \`${track.title}\` to the queue`);
         } catch (e) {
             // let's return error if something failed
             return interaction.followUp(`Something went wrong: ${e}`);
