@@ -2,7 +2,7 @@ import {
     Client, Interaction, EmbedBuilder,
     ButtonBuilder, ButtonStyle, ActionRowBuilder,
     ComponentType, ButtonInteraction, CacheType,
-    InteractionResponse, userMention
+    InteractionResponse, userMention, ChatInputCommandInteraction
 } from "discord.js"
 import { testServer, devs } from "../../../config.json"
 import getLocalCommands from "../../utils/getLocalCommands";
@@ -29,11 +29,11 @@ const playerMusicLogic = async (client: Client, interaction: any, queue: GuildQu
         .addComponents(skipButton, pauseButton);
 
     const videoEmbed = new EmbedBuilder()
-        .setColor("#d59342")
+        .setColor("#FFFFFF")
         .setTitle(`Playing: ${track.title}`)
         .setThumbnail(track.thumbnail)
-        .setDescription(`---------00:00/${track.duration}`)
-        .addFields({ name: '\u200B', value: '\u200B' }, { name: 'Requester', value: `${interaction.user.username}` })
+        .setDescription(`▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 00:00/${track.duration}`)
+        .addFields({ name: 'Requester', value: `<@${interaction.user.id}>` })
 
 
     // we will later define queue.metadata object while creating the queue
@@ -45,10 +45,8 @@ const playerMusicLogic = async (client: Client, interaction: any, queue: GuildQu
         collector.on("collect", async (i: ButtonInteraction<CacheType>) => {
             switch (i.customId) {
                 case ("skip"): {
-                    skipButton.setDisabled(true)
-                    pauseButton.setDisabled(true)
-                    i.update({ components: [row] })
                     queue.node.skip();
+                    collector.emit("end")
                     break;
                 }
                 case ("pause"): {
@@ -82,12 +80,11 @@ const playerMusicLogic = async (client: Client, interaction: any, queue: GuildQu
 
 
 module.exports = async (client: Client, interaction: any) => {
-
     if (i == 0) {
         i++;
         player = new Player(client)
-        await player.extractors.register(YouTubeExtractor, {})
 
+        await player.extractors.register(YouTubeExtractor, {})
 
         player.events.on('playerStart', (queue, track) => {
             playerMusicLogic(client, interaction, queue, track)
