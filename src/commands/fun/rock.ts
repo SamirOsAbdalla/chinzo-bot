@@ -59,8 +59,8 @@ module.exports = {
     description: "Play a game of rock, paper, scissors against another player!",
     options: [
         {
-            name: "playagainstchinzo",
-            description: "Enter 'yes' to play against the one and only Chinzo",
+            name: "playagainstgreasy",
+            description: "Enter 'yes' to play against the one and only Greasy",
             required: false,
             type: ApplicationCommandOptionType.String
         }
@@ -84,29 +84,29 @@ module.exports = {
         const row = new ActionRowBuilder<ButtonBuilder>()
             .addComponents(rock, paper, scissors);
 
-        if (interaction.options.get("playagainstchinzo")?.value == "yes") {
-            let rockEmbedChinzo = new EmbedBuilder()
-                .setColor("#d59342")
-                .setTitle("Play rock, paper, scissors against Chinzo!")
-                .setAuthor({ name: "Chinzo" })
+        if (interaction.options.get("playagainstgreasy")?.value == "yes") {
+            let rockEmbedGreasy = new EmbedBuilder()
+                .setColor("#FFFFFF")
+                .setTitle("Play rock, paper, scissors against Greasy!")
+                .setAuthor({ name: "Greasy" })
 
-            const response = await interaction.reply({ embeds: [rockEmbedChinzo], components: [row], ephemeral: true })
+            const response = await interaction.reply({ embeds: [rockEmbedGreasy], components: [row], ephemeral: true })
             const collector = response.createMessageComponentCollector({ componentType: ComponentType.Button, time: 30_000 });
 
             const userName = interaction.user.username;
             collector.on('collect', async (i) => {
                 const userAction = i.customId;
-                const chinzoAction = actionArray[Math.floor(Math.random() * 3)]
+                const greasyAction = actionArray[Math.floor(Math.random() * 3)]
                 const winnerObject = determineWinner(
-                    { action: chinzoAction, playerName: "Chinzo" },
+                    { action: greasyAction, playerName: "Greasy" },
                     { action: userAction, playerName: userName }
                 )
-                if (winnerObject?.winner == "Chinzo") {
-                    await i.reply({ content: "Chinzo has beaten you. This is of course, to be expected.", ephemeral: true })
+                if (winnerObject?.winner == "Greasy") {
+                    await i.reply({ content: "Greasy has beaten you. This is of course, to be expected.", ephemeral: true })
                 } else if (winnerObject?.winner) {
-                    await i.reply({ content: "You have actually beaten the great Chinzo!", ephemeral: true })
+                    await i.reply({ content: "You have actually beaten the great Greasy!", ephemeral: true })
                 } else {
-                    await i.reply({ content: "You have tied against the almighty Chinzo.", ephemeral: true })
+                    await i.reply({ content: "You have tied against the almighty Greasy.", ephemeral: true })
                 }
             })
             collector.on('end', async (i) => {
@@ -117,9 +117,9 @@ module.exports = {
             })
         } else {
             let rockEmbed = new EmbedBuilder()
-                .setColor("#d59342")
+                .setColor("#FFFFFF")
                 .setTitle("Play rock, paper, scissors against another player")
-                .setAuthor({ name: "Chinzo" })
+                .setAuthor({ name: "Greasy" })
 
             const response = await interaction.reply({ embeds: [rockEmbed], components: [row] })
 
