@@ -1,13 +1,18 @@
-import { Client, InteractionType, ChatInputCommandInteraction, GuildMember } from "discord.js"
+import {
+    Client, InteractionType,
+    ChatInputCommandInteraction, GuildMember,
+    SlashCommandBuilder
+} from "discord.js"
 
 
 module.exports = {
-    name: "numonline",
-    description: "Replies with the number of users with the 'online' status",
+    data: new SlashCommandBuilder()
+        .setName("numonline")
+        .setDescription("Replies with the number of users with the 'online' status"),
     // devOnly: ,
     // testOnly: ,
     // options:,
-    callback: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    async execute(interaction: ChatInputCommandInteraction) {
         const members = await interaction.guild?.members.fetch({ withPresences: true })
         let numOnline = 0;
         members?.forEach((member: GuildMember) => {

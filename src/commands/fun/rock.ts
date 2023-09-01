@@ -2,7 +2,8 @@ import {
     Client, GuildMember, ChannelType,
     ChatInputCommandInteraction, ComponentType,
     ActionRowBuilder, ButtonBuilder, ButtonStyle,
-    EmbedBuilder, ApplicationCommandOptionType
+    EmbedBuilder, ApplicationCommandOptionType,
+    SlashCommandBuilder
 } from "discord.js"
 import findTextChannel from "../../utils/findTextChannel"
 
@@ -55,17 +56,18 @@ const determineWinner = (player1: Player, player2: Player): WinObject | undefine
 
 
 module.exports = {
-    name: "rock",
-    description: "Play a game of rock, paper, scissors against another player!",
-    options: [
-        {
-            name: "playagainstgreasy",
-            description: "Enter 'yes' to play against the one and only Greasy",
-            required: false,
-            type: ApplicationCommandOptionType.String
-        }
-    ],
-    callback: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    data: new SlashCommandBuilder()
+        .setName("rock")
+        .setDescription("Play a game of rock, paper, scissors!"),
+    // options: [
+    //     {
+    //         name: "playagainstgreasy",
+    //         description: "Enter 'yes' to play against the one and only Greasy",
+    //         required: false,
+    //         type: ApplicationCommandOptionType.String
+    //     }
+    // ],
+    async execute(interaction: ChatInputCommandInteraction) {
         const rock = new ButtonBuilder()
             .setCustomId('rock')
             .setLabel('Rock')

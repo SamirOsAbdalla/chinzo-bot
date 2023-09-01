@@ -2,23 +2,20 @@ import { Player } from "discord-player"
 import {
     Client,
     ApplicationCommandOptionType, EmbedBuilder,
+    SlashCommandBuilder
 } from "discord.js"
 
 module.exports = {
-    name: "play",
-    description: "Play a video from youtube",
-    // devOnly: ,
-    // testOnly: ,
-    options: [
-        {
-            name: "query",
-            description: "Type in a song to query",
-            required: true,
-            type: ApplicationCommandOptionType.String
-        }
-    ],
-    callback: async (client: Client, interaction: any, player: Player) => {
+    data: new SlashCommandBuilder()
+        .setName("play")
+        .setDescription("Play a video from youtube")
+        .addStringOption(option =>
+            option.setName("query")
+                .setDescription("Type in a song to query")
+                .setRequired(true)),
 
+
+    async execute(interaction: any, player: Player) {
         const channel = interaction.member.voice.channel;
         if (!channel) return interaction.reply({ content: 'You are not connected to a voice channel!', ephemeral: true }); // make sure we have a voice channel
 
@@ -37,7 +34,7 @@ module.exports = {
             return interaction.followUp(`<@${interaction.user.id}> | \u1CBCAdded \`${track.title}\` to the queue`);
         } catch (e) {
             // let's return error if something failed
-            return interaction.followUp(`Something went wrong: ${e}`);
+            return interaction.followUp(`Play error: ${e}`);
         }
     }
 }

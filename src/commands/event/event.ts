@@ -3,6 +3,7 @@ import {
     ApplicationCommandOptionType, ModalBuilder,
     TextInputBuilder, TextInputStyle,
     ActionRowBuilder,
+    SlashCommandBuilder
 } from "discord.js";
 import EventModel from "../../models/Event";
 import { Event } from "../../models/Event";
@@ -84,24 +85,25 @@ const eventCreate = async (interaction: ChatInputCommandInteraction) => {
 
 
 module.exports = {
-    name: "event",
-    description: "Handle all server events here",
-    options: [
-        {
-            name: "create",
-            description: "Create new event",
-            required: false,
-            type: ApplicationCommandOptionType.String
-        },
-        {
-            name: "list",
-            description: "List events",
-            choices: [{ name: "all", value: "all" }, { name: "next", value: "next" }],
-            required: false,
-            type: ApplicationCommandOptionType.String
-        }
-    ],
-    callback: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    data: new SlashCommandBuilder()
+        .setName("event")
+        .setDescription("Handle all server events here"),
+    // options: [
+    //     {
+    //         name: "create",
+    //         description: "Create new event",
+    //         required: false,
+    //         type: ApplicationCommandOptionType.String
+    //     },
+    //     {
+    //         name: "list",
+    //         description: "List events",
+    //         choices: [{ name: "all", value: "all" }, { name: "next", value: "next" }],
+    //         required: false,
+    //         type: ApplicationCommandOptionType.String
+    //     }
+    // ],
+    async execute(interaction: ChatInputCommandInteraction) {
 
         const optionsCreate = interaction.options.get("create")
         console.log(optionsCreate)
