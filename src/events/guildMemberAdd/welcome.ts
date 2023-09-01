@@ -6,7 +6,6 @@ module.exports = async (client: Client, member: GuildMember) => {
     const channels = await member.guild.channels.fetch()
 
     const introChannel = channels.find(channel => channel?.name == "👤-introductions")
-    const eventsChannel = channels.find(channel => channel?.name == "📅-events")
     const welcomeChannel = channels.find(channel => channel?.name == "👋welcome")
     let welcomeEmbed = new EmbedBuilder()
         .setColor("#FFFFFF")
@@ -14,8 +13,7 @@ module.exports = async (client: Client, member: GuildMember) => {
         .setDescription(
             `Please feel free to check out some of the things you can do below.\n-------------------------------------------------------------------\n
             🚗 | \u1CBCCheck out our [IG](https://www.instagram.com/gator.greasers/) & [GatorXperience page](https://sfsu.campuslabs.com/engage/organization/gatorgreasers)\n
-            👤 | \u1CBCIntroduce yourself in  <#${introChannel?.id}>\n
-            📅 | \u1CBCFind details about our upcoming events in <#${eventsChannel?.id}>`
+            👤 | \u1CBCIntroduce yourself in  <#${introChannel?.id}>\n`
         )
         .setThumbnail("https://i.imgur.com/9wC6WrJ.png")
         .setAuthor({ name: "Greasy" })
