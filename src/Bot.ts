@@ -9,7 +9,7 @@ import registerClientCommands from './utils/registerClientCommands';
 
 
 
-let client = new Client({
+export let client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMembers,
@@ -19,6 +19,7 @@ let client = new Client({
         GatewayIntentBits.DirectMessages,
         GatewayIntentBits.GuildMessageReactions,
         GatewayIntentBits.GuildVoiceStates,
+        GatewayIntentBits.GuildScheduledEvents
     ]
 });
 
