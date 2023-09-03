@@ -58,7 +58,11 @@ const determineWinner = (player1: Player, player2: Player): WinObject | undefine
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("rock")
-        .setDescription("Play a game of rock, paper, scissors!"),
+        .setDescription("Play a game of rock, paper, scissors!")
+        .addStringOption(option =>
+            option.setName('playagainstgreasy')
+                .setDescription("Type 'yes' to play rock, paper, scissors against Greasy")
+                .setRequired(true)),
     // options: [
     //     {
     //         name: "playagainstgreasy",
