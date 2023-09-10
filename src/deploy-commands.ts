@@ -1,5 +1,4 @@
 import 'dotenv/config'
-import { testServer } from '../config.json'
 import { Client, Events } from "discord.js"
 import getCommands from "./utils/getCommands"
 import { REST, Routes } from "discord.js"
@@ -9,6 +8,7 @@ const rest = new REST().setToken(process.env.TOKEN!);
 // and deploy your commands!
 (async () => {
     try {
+        let testServer = process.env.TEST_SERVER!
         console.log(`Started refreshing ${commands.length} application (/) commands.`);
         // The put method is used to fully refresh all commands in the guild with the current set
 

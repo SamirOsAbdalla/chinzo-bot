@@ -1,6 +1,4 @@
 import 'dotenv/config'
-import { testServer } from '../../config.json'
-
 import { Client, Events } from "discord.js"
 import getCommands from "../utils/getCommands"
 import { REST, Routes } from "discord.js"
@@ -10,6 +8,7 @@ module.exports = {
     name: Events.ClientReady,
     once: true,
     async execute(client: Client) {
+        let testServer = process.env.TEST_SERVER!
         // console.log(commands)
         // await rest.put(
         //     Routes.applicationCommands(process.env.CLIENT_ID!),
