@@ -7,7 +7,7 @@ module.exports = {
         // presence?.activities.forEach(activity => {
         //     if (activity.name == "League of Legends") {
         //         const user = client.users.cache.get(presence.userId)
-        //         user?.send("Get off league right now")
+        //         user?.send("Get off league right now or else")
         //     }
         // })
     }
