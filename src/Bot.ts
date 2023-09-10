@@ -2,7 +2,7 @@ require('dotenv').config()
 var fs = require('fs');
 var path = require("node:path")
 import { Client, Collection, GatewayIntentBits } from "discord.js";
-import eventHandler from "../src/handlers/eventHandlers"
+import eventHandler from "./handlers/eventHandlers";
 import mongoose from 'mongoose';
 import registerClientCommands from './utils/registerClientCommands';
 
