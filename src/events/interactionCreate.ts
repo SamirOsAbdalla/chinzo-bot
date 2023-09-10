@@ -5,7 +5,6 @@ import {
     InteractionResponse, userMention, ChatInputCommandInteraction,
     Events
 } from "discord.js"
-import { testServer, devs } from "../../config.json"
 import { Player, GuildQueue, Track } from "discord-player";
 import { YouTubeExtractor } from "@discord-player/extractor";
 import getCommands from "../utils/getCommands";

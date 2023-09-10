@@ -25,7 +25,6 @@ export let client = new Client({
 
 export let clientCommands = new Collection<any, any>();
 
-console.log("HI" + process.env.MONGO_URL!);
 // Client and database login
 (async () => {
     try {
