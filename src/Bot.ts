@@ -1,4 +1,4 @@
-import 'dotenv/config'
+require('dotenv').config()
 import * as fs from 'node:fs';
 import * as path from "node:path"
 import { Client, Collection, GatewayIntentBits } from "discord.js";
