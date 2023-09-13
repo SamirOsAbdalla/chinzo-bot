@@ -26,7 +26,7 @@ module.exports = {
                     `**Event Name**\n` +
                     `\`${guildScheduledEvent.name}\`\n\n` +
                     `**Event Description**\n` +
-                    `\`${guildScheduledEvent.description}\`\n\n` +
+                    `${guildScheduledEvent.description}\n\n` +
                     `**Event Date and Time**\n` +
                     `\`${date}\`\n\n` +
                     `**Location**\n` +
