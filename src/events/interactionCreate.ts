@@ -98,7 +98,8 @@ module.exports = {
             });
         }
 
-        if (!interaction.isChatInputCommand()) return;
+        if (!interaction.isChatInputCommand() || interaction.isButton() ||
+            interaction.isModalSubmit()) return;
         const command = clientCommands.get(interaction.commandName);
 
         if (!command) {
