@@ -31,7 +31,7 @@ module.exports = {
 
         // const foundChannel = findTextChannel(member)
 
-        if (welcomeChannel?.type == ChannelType.GuildText) {
+        if (welcomeChannel?.type == ChannelType.GuildText && !member.user.bot) {
             welcomeChannel.send({ target: member, content: `<@${member.user.id}>`, embeds: [welcomeEmbed] })
         }
     }
