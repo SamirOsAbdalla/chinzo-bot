@@ -52,9 +52,9 @@ module.exports = {
             await message.reply(createResponseMessage(content, "greasy bot"))
         }
 
-        if (!message.author.bot && content.includes("ping")) {
-            await message.reply(createResponseMessage(content, "ping"))
-        }
+        // if (!message.author.bot && content.includes("ping")) {
+        //     await message.reply(createResponseMessage(content, "ping"))
+        // }
     }
 
 }
