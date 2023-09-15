@@ -79,7 +79,7 @@ module.exports = {
                 return
             }
 
-            await interaction.reply({ content: `**ERROR!** Could not find track ${trackName}`, ephemeral: true })
+            await interaction.reply({ content: `**ERROR!** Could not find track \`${trackName}\``, ephemeral: true })
         }
 
     }

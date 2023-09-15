@@ -30,7 +30,7 @@ module.exports = {
                     `**Event Date and Time**\n` +
                     `\`${date}\`\n\n` +
                     `**Location**\n` +
-                    `\`${guildScheduledEvent.entityMetadata?.location}\``
+                    `${guildScheduledEvent.entityMetadata?.location}`
                 )
                 .setColor("#FFFFFF")
 

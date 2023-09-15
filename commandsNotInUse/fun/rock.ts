@@ -5,7 +5,7 @@ import {
     EmbedBuilder, ApplicationCommandOptionType,
     SlashCommandBuilder
 } from "discord.js"
-import findTextChannel from "../../utils/findTextChannel"
+
 
 type Player = {
     action: string,

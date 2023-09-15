@@ -26,7 +26,6 @@ const timeConversion = (time: string) => {
     const millisecondsLength = 4;
 
     let timeArr = time.split(":")
-    console.log(timeArr)
     const t0Length = timeArr[0].length
     const t1Length = timeArr[1].length
     const t2Length = timeArr[2].length
@@ -49,7 +48,7 @@ const updateTrack = async (i: ChatInputCommandInteraction) => {
             .setStyle(TextInputStyle.Short)
         const driverTime = new TextInputBuilder()
             .setCustomId("drivertime")
-            .setLabel("Driver Time (Minutes:Seconds:Milliseconds")
+            .setLabel("Driver Time (Minutes:Seconds:Milliseconds)")
             .setStyle(TextInputStyle.Short)
         const carModel = new TextInputBuilder()
             .setCustomId("carmodel")
@@ -101,22 +100,23 @@ const updateTrack = async (i: ChatInputCommandInteraction) => {
         }
         return;
     }
-    await i.reply({ content: `**ERROR!** Could not find track ${trackName}`, ephemeral: true })
+    await i.reply({ content: `**ERROR!** Could not find track \`${trackName}\``, ephemeral: true })
 }
 
 
 const deleteTrack = async (i: ChatInputCommandInteraction) => {
-    const trackName = i.options.getString("name")
+    const trackName = i.options.getString("trackname")
     const response = await TrackModel.deleteOne({ name: { $regex: trackName, $options: 'i' } })
-    if (response) {
+
+    if (response.deletedCount > 0) {
         await i.reply({ content: `**Success!** Deleted track \`${trackName}\``, ephemeral: true })
         return
     }
-    await i.reply({ content: `**ERROR!** Could not delete track \`${trackName}\``, ephemeral: true })
+    await i.reply({ content: `**ERROR!** Could not delete/find track \`${trackName}\``, ephemeral: true })
 }
 
 const deleteTrackTime = async (i: ChatInputCommandInteraction) => {
-    const trackName = i.options.getString("name")
+    const trackName = i.options.getString("nameoftrack")
     const doesTrackExist = await TrackModel.findOne({ name: { $regex: trackName, $options: 'i' } })
     if (doesTrackExist) {
         const deleteModal = new ModalBuilder()
@@ -199,7 +199,7 @@ module.exports = {
                 .setName('delete')
                 .setDescription('Delete a track')
                 .addStringOption(option =>
-                    option.setName('name')
+                    option.setName('trackname')
                         .setDescription('Name of the track')
                         .setRequired(true))
         )
@@ -208,7 +208,7 @@ module.exports = {
                 .setName('deletetracktime')
                 .setDescription('Delete a track time from a certain track')
                 .addStringOption(option =>
-                    option.setName('name')
+                    option.setName('nameoftrack')
                         .setDescription('Name of the track')
                         .setRequired(true))
         ),

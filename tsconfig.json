@@ -24,7 +24,9 @@
         "esm": true
     },
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "commandsNotInUse/_event",
+        "commandsNotInUse/misc"
     ],
     "exclude": [
         "node_modules",

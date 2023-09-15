@@ -5,8 +5,8 @@ import {
     ActionRowBuilder, PermissionFlagsBits,
     SlashCommandBuilder,
 } from "discord.js";
-import EventModel from "../models/Event";
-import { EventType } from "../models/Event";
+import EventModel from "../../src/models/Event";
+import { EventType } from "../../src/models/Event";
 
 
 const handleListCommand = async (interaction: ChatInputCommandInteraction) => {
