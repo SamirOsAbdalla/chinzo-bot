@@ -8,6 +8,7 @@ import findTextChannel from "../utils/findTextChannel"
 module.exports = {
     name: Events.GuildMemberAdd,
     async execute(member: GuildMember) {
+
         const channels = await member.guild.channels.fetch()
 
         const introChannel = channels.find(channel => channel?.name == "👤-introductions")
@@ -23,11 +24,7 @@ module.exports = {
                 📅 | \u1CBCCheck out our events in <#${eventsChannel?.id}>\n`
             )
             .setThumbnail("https://i.imgur.com/9wC6WrJ.png")
-            .setAuthor({ name: "Greasy" })
-
-
-        welcomeEmbed.setAuthor({ name: `${member.user.globalName}`, iconURL: member.displayAvatarURL() })
-
+            .setAuthor({ name: "GreasyBot" })
 
         // const foundChannel = findTextChannel(member)
 
