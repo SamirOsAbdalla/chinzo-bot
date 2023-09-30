@@ -8,8 +8,10 @@ const dayjs = require('dayjs')
 
 let utc = require('dayjs/plugin/utc')
 let timezone = require('dayjs/plugin/timezone')
+let localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(utc)
 dayjs.extend(timezone)
+dayjs.extend(localizedFormat)
 const tz = "America/Los_Angeles"
 
 module.exports = {
