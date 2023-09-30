@@ -8,15 +8,16 @@ const dayjs = require('dayjs')
 
 let utc = require('dayjs/plugin/utc')
 let timezone = require('dayjs/plugin/timezone')
+let localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(utc)
 dayjs.extend(timezone)
+dayjs.extend(localizedFormat)
 const tz = "America/Los_Angeles"
 
 module.exports = {
     name: Events.GuildScheduledEventCreate,
     async execute(guildScheduledEvent: GuildScheduledEvent) {
 
-        console.log(guildScheduledEvent)
         const guild = await client.guilds.fetch(guildScheduledEvent.guildId)
         const channels = await guild.channels.fetch()
         const eventChannel = channels.find(channel => channel?.name == "📅-events")
@@ -24,6 +25,7 @@ module.exports = {
         if (eventChannel?.type == ChannelType.GuildText) {
 
             const date = dayjs(guildScheduledEvent.scheduledStartTimestamp).tz(tz).format('LLLL')
+
             let eventEmbed = new EmbedBuilder()
                 .setTitle(`${guildScheduledEvent.name}`)
                 .setDescription(
