@@ -27,7 +27,7 @@
         "src/**/*",
         "commandsNotInUse/_event",
         "commandsNotInUse/misc"
-    ],
+, "commandsNotInUse/pong"    ],
     "exclude": [
         "node_modules",
         "dist"
