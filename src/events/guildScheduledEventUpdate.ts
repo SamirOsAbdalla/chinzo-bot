@@ -17,6 +17,7 @@ module.exports = {
         const textEventChannel = eventChannel as TextChannel
 
 
+        console.log(newGuildScheduledEvent)
         await textEventChannel.messages.fetch({ limit: 100 }).then(messages => {
             messages.forEach(message => {
                 if (message?.embeds[0]?.data.title == guildScheduledEvent.name) {
