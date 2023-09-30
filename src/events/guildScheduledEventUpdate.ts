@@ -19,8 +19,10 @@ module.exports = {
         await textEventChannel.messages.fetch({ limit: 100 }).then(messages => {
             messages.forEach(message => {
                 if (message?.embeds[0]?.data.title == guildScheduledEvent.name) {
+
                     const date = dayjs(newGuildScheduledEvent.scheduledStartTimestamp).format('LLLL')
 
+                    console.log(date)
                     let eventEmbed = new EmbedBuilder()
                         .setTitle(`${newGuildScheduledEvent.name}`)
                         .setDescription(
