@@ -12,6 +12,8 @@ dayjs.extend(localizedFormat)
 module.exports = {
     name: Events.GuildScheduledEventCreate,
     async execute(guildScheduledEvent: GuildScheduledEvent) {
+
+        console.log(guildScheduledEvent)
         const guild = await client.guilds.fetch(guildScheduledEvent.guildId)
         const channels = await guild.channels.fetch()
         const eventChannel = channels.find(channel => channel?.name == "📅-events")
