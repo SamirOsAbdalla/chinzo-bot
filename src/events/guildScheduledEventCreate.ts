@@ -23,13 +23,13 @@ module.exports = {
                 .setTitle(`${guildScheduledEvent.name}`)
                 .setDescription(
                     `**Attention *greasy gators*, we are excited to announce our newest event!**\n\n\n` +
-                    `**Event Name**\n` +
+                    `__**Event Name**__\n` +
                     `\`${guildScheduledEvent.name}\`\n\n` +
-                    `**Event Description**\n` +
+                    `__**Event Description**__\n` +
                     `\`${guildScheduledEvent.description}\`\n\n` +
-                    `**Event Date and Time**\n` +
+                    `__**Event Date and Time**__\n` +
                     `\`${date}\`\n\n` +
-                    `**Location**\n` +
+                    `__**Location**__\n` +
                     `${guildScheduledEvent.entityMetadata?.location}`
                 )
                 .setColor("#FFFFFF")

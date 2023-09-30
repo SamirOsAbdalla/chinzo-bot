@@ -11,31 +11,31 @@ dayjs.extend(localizedFormat)
 module.exports = {
     name: Events.GuildScheduledEventUpdate,
     async execute(guildScheduledEvent: GuildScheduledEvent, newGuildScheduledEvent: GuildScheduledEvent) {
+
+
         const guild = await client.guilds.fetch(newGuildScheduledEvent.guildId)
         const channels = await guild.channels.fetch()
         const eventChannel = channels.find(channel => channel?.name == "📅-events")
         const textEventChannel = eventChannel as TextChannel
 
 
-        console.log(newGuildScheduledEvent)
         await textEventChannel.messages.fetch({ limit: 100 }).then(messages => {
             messages.forEach(message => {
                 if (message?.embeds[0]?.data.title == guildScheduledEvent.name) {
 
-                    console.log(newGuildScheduledEvent)
                     const date = dayjs(newGuildScheduledEvent.scheduledStartTimestamp).format('LLLL')
 
                     let eventEmbed = new EmbedBuilder()
                         .setTitle(`${newGuildScheduledEvent.name}`)
                         .setDescription(
                             `**Attention *greasy gators*, we are excited to announce our newest event!**\n\n\n` +
-                            `**Event Name**\n` +
+                            `__**Event Name**__\n` +
                             `\`${newGuildScheduledEvent.name}\`\n\n` +
-                            `**Event Description**\n` +
+                            `__**Event Description**__\n` +
                             `\`${newGuildScheduledEvent.description}\`\n\n` +
-                            `**Event Date and Time**\n` +
+                            `__**Event Date and Time**__\n` +
                             `\`${date}\`\n\n` +
-                            `**Location**\n` +
+                            `__**Location**__\n` +
                             `${newGuildScheduledEvent.entityMetadata?.location}`
                         )
                         .setColor("#FFFFFF")
