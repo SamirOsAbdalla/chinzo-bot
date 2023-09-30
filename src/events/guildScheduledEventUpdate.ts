@@ -5,8 +5,12 @@ import {
 } from "discord.js";
 import { client } from "../Bot";
 const dayjs = require('dayjs')
-let localizedFormat = require('dayjs/plugin/localizedFormat')
-dayjs.extend(localizedFormat)
+
+let utc = require('dayjs/plugin/utc')
+let timezone = require('dayjs/plugin/timezone')
+dayjs.extend(utc)
+dayjs.extend(timezone)
+const tz = "America/Los_Angeles"
 
 module.exports = {
     name: Events.GuildScheduledEventUpdate,
@@ -23,7 +27,7 @@ module.exports = {
             messages.forEach(message => {
                 if (message?.embeds[0]?.data.title == guildScheduledEvent.name) {
 
-                    const date = dayjs(newGuildScheduledEvent.scheduledStartTimestamp).format('LLLL')
+                    const date = dayjs(newGuildScheduledEvent.scheduledStartTimestamp).tz(tz).format('LLLL')
 
                     let eventEmbed = new EmbedBuilder()
                         .setTitle(`${newGuildScheduledEvent.name}`)
