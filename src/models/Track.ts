@@ -4,7 +4,8 @@ export interface TrackTime {
     time: string,
     timeHolder: string,
     carModel: string,
-    convertedTime: string
+    convertedTime: string,
+    tires: string
 }
 
 export interface Track {
@@ -17,6 +18,7 @@ const trackTimeSchema = new Schema<TrackTime>({
     timeHolder: { type: String, required: true },
     carModel: { type: String, required: true },
     convertedTime: { type: String, required: true },
+    tires: { type: String, required: true },
 })
 
 const trackSchema = new Schema<Track>({
