@@ -119,7 +119,7 @@ module.exports = {
 
                 embedResponse = await interaction.followUp({ embeds: [pollEmbed], components: [pollRow] })
 
-                const pollCollector = embedResponse.createMessageComponentCollector({ componentType: ComponentType.Button, time: 2_000_000 })
+                const pollCollector = embedResponse.createMessageComponentCollector({ componentType: ComponentType.Button, time: 8.64e7 })
 
 
                 const userSet = new Set();
