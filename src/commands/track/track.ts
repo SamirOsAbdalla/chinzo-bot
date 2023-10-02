@@ -54,12 +54,17 @@ const updateTrack = async (i: ChatInputCommandInteraction) => {
             .setCustomId("carmodel")
             .setLabel("Car Model")
             .setStyle(TextInputStyle.Short)
+        const tires = new TextInputBuilder()
+            .setCustomId("tires")
+            .setLabel("Tires")
+            .setStyle(TextInputStyle.Short)
 
         const firstActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(driverName);
         const secondActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(driverTime);
         const thirdActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(carModel);
+        const fourthActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(tires);
 
-        updateModal.addComponents(firstActionRow, secondActionRow, thirdActionRow)
+        updateModal.addComponents(firstActionRow, secondActionRow, thirdActionRow, fourthActionRow)
         await i.showModal(updateModal)
 
         try {
@@ -74,12 +79,14 @@ const updateTrack = async (i: ChatInputCommandInteraction) => {
                 const name = fields.getField("drivername").value
                 const time = fields.getField("drivertime").value
                 const model = fields.getField("carmodel").value
+                const tires = fields.getField("tires").value
 
                 const newTrackTime: TrackTime = {
                     timeHolder: name,
                     time,
                     carModel: model,
-                    convertedTime: timeConversion(time)
+                    convertedTime: timeConversion(time),
+                    tires
                 }
                 const updateResponse = await TrackModel.findOneAndUpdate(
                     { name: { $regex: trackName, $options: 'i' } },

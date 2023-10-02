@@ -55,7 +55,7 @@ module.exports = {
                     let responseString =
                         `Here are all the track times for **${trackName}**\n\n\n`
 
-                    sortedTrackTimes.forEach((track: TrackTime) => {
+                    sortedTrackTimes.forEach((track: TrackTime, index: number) => {
                         let trackLength = track.time.length - 2
                         let numSpaces = 7 - trackLength
                         let spaces: string = " ";
@@ -64,7 +64,7 @@ module.exports = {
                         }
 
 
-                        responseString += `\`${track.time}\`${spaces} **${track.timeHolder}**  *${track.carModel}*\n\n`
+                        responseString += `**${index + 1}:** \`Time: ${track.time}\`${spaces} \`Driver: ${track.timeHolder}\`     \`Model: ${track.carModel}\`    \`Tires: ${track.tires}\`\n\n`
                     })
 
                     await interaction.reply({ content: responseString, ephemeral: true })
