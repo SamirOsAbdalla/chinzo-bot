@@ -25,6 +25,8 @@ module.exports = {
                 { name: '/track', value: 'Admin only. Use this to add, delete or update a track' },
                 { name: '\u200B', value: '\u200B' },
                 { name: '/poll', value: 'Admin only. Use "create" to create a new poll with up to 4 fields\n', inline: true },
+                { name: '\u200B', value: '\u200B' },
+                { name: '/rules', value: 'Admin only. Send out a rules channel message\n', inline: true },
             )
         await interaction.reply({ embeds: [helpEmbed], ephemeral: true })
     }
