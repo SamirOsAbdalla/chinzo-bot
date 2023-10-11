@@ -20,6 +20,8 @@ fun and useful commands to interact with while on the server.
 
 **/poll:** Admin only. Use this to create a new poll for members to vote on.
 
+**/rules:** Admin only. Use this to send out a rules message inside of the 'rules' channel.
+
 ## Other functionality
 
 - Notifies all members in the server when a new event is created. Auto-formats event details
