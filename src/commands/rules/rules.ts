@@ -21,6 +21,8 @@ module.exports = {
         let rulesText =
             'Welcome to the Gator Greasers Automotive Club at SF State!\n\n' +
 
+            'React to this message with ✅ to gain access to other channels\n\n' +
+
             `**__1) Be respectful__**\n` +
             '- Respect everyone including their cars\n' +
             '- no matter the difference in opinion etc treat people how you want to be treated\n\n' +
