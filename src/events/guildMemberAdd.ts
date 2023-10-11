@@ -20,7 +20,7 @@ module.exports = {
             .setDescription(
                 `Please feel free to check out some of the things you can do below.\n-------------------------------------------------------------------\n
                 🚗 | \u1CBCCheck out our [IG](https://www.instagram.com/gator.greasers/) & [GatorXperience page](https://sfsu.campuslabs.com/engage/organization/gatorgreasers)\n
-                📕 | \u1CBCRead the rules in <#${rulesChannel?.id}>\n
+                📕 | \u1CBCRead the rules in <#${rulesChannel?.id}> to gain access to the rest of the server\n
                 📅 | \u1CBCCheck out our events in <#${eventsChannel?.id}>\n`
             )
             .setThumbnail("https://i.imgur.com/9wC6WrJ.png")
