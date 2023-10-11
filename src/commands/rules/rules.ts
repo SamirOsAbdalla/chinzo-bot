@@ -17,7 +17,7 @@ module.exports = {
         const channels = await interaction.guild?.channels.fetch()
 
         const rulesChannel = channels?.find(channel => channel?.name == "rules")
-
+        const introChannel = channels?.find(channel => channel?.name == "👤-introductions")
         let rulesText =
             'Welcome to the Gator Greasers Automotive Club at SF State!\n\n' +
 
@@ -40,6 +40,8 @@ module.exports = {
             '**__5) No illegal activity is allowed __**\n' +
             '- Promoting or posting any illegal activity such as sideshows, street racing, street drifting, takeovers, are not allowed\n' +
             '- No burnouts, revving, peeling out, two stepping, doughnuts are allowed\n\n' +
+
+            `Please make sure to introduce yourself in <#${introChannel?.id}> once you have read and accepted the rules!\n\n` +
 
             '*Rules are subject to change*'
 
